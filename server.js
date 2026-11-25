@@ -780,6 +780,8 @@ server.on("error", (error) => {
   process.exit(1);
 });
 
-server.listen(PORT, "127.0.0.1", () => {
+const HOST = process.env.HOST || (process.env.RAILWAY_ENVIRONMENT_ID ? "0.0.0.0" : "127.0.0.1");
+
+server.listen(PORT, HOST, () => {
   console.log(`식물 관찰 학습: http://127.0.0.1:${PORT}`);
 });
